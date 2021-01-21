@@ -1,7 +1,9 @@
 :root {
   --border-color: rgb(227, 230, 215);
 }
-
+html{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 body,
 div,
 button {
@@ -34,10 +36,20 @@ main {
   justify-content: space-between;
   margin: 5px 0;
 }
-.output {
-  width: inherit;
+.row:first-child{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   height: 50px;
-  border: 1px solid var(--border-color);  
+  border: 1px solid var(--border-color);
+  background-color: rgba(101, 92, 122, 0.404);
+}
+.output {
+  width: inherit;  
+  height: auto;
+  color: var(--border-color);
+  padding: 0 5px 2px 0; 
+  font-size: 1.1em;
 }
 .btn {
   padding: 15px;
@@ -57,8 +69,10 @@ main {
     font-weight: 500;
     font-size: 1.2em;
 }
-.btn:focus {
+.btn:focus{
   outline: none;
+}
+.btn:active {  
   border: 2px solid var(--border-color);
   border-style: inset;
   background: -webkit-linear-gradient(
