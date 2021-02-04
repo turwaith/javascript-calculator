@@ -19,6 +19,7 @@ for (const item of BTN_NUMBER) {
 //  add a event on all action button
 for (const item of BTN_ACTION) {
     item.addEventListener("click", (e) => {
+        // if(CALCUL.textContent === "") return;
         CALCUL.textContent += e.target.textContent;
     });
 }
@@ -31,8 +32,8 @@ RESET.addEventListener("click", () => {
 
 //  EQUAL button
 EQUAL.addEventListener("click", () =>{
-    let rgx = /[*\-\+\/]/,
-        calcul = eval(CALCUL.textContent);
+    let rgx = /[\*\-\+\/]*/,
+        calcul = eval(CALCUL.textContent.replace("^","**"));
 
     //  test if calcul line is empty or doesn't include calcul operator
     if(CALCUL.textContent === "" || !rgx.test(CALCUL.textContent)) return;
@@ -66,10 +67,15 @@ PI.addEventListener("click", (e) =>{
 });
 
 // EXP button
+EXP.addEventListener("click", (e) => {
+    if(CALCUL.textContent === "") return;
+    else{
+        let lastChar = CALCUL.textContent.slice(-1);
+            operators = ["+","-","*","/","^"];
 
-
-/**
- * @param {string} a The first string to add
- * @param {string} b The second string to add
- * @return {string} Return the string 'a' + string 'b'
- */
+        if(operators.includes(lastChar))
+            CALCUL.textContent = CALCUL.textContent.slice(-1)+"^";
+        else
+            CALCUL.textContent += "^";
+    }
+});
