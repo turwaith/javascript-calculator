@@ -6,8 +6,7 @@ const CALCUL = document.getElementById("calcul"),
     RESET = document.getElementById("reset"),
     EQUAL = document.getElementById("equal"),
     CANCEL =  document.getElementById("cancel"),
-    PI = document.getElementById("pi"),
-    EXP = document.getElementById("exp");
+    PI = document.getElementById("pi");
 
 //  add a event on all number button
 for (const item of BTN_NUMBER) {
@@ -19,8 +18,20 @@ for (const item of BTN_NUMBER) {
 //  add a event on all action button
 for (const item of BTN_ACTION) {
     item.addEventListener("click", (e) => {
-        // if(CALCUL.textContent === "") return;
-        CALCUL.textContent += e.target.textContent;
+        if(CALCUL.textContent === "") return;
+        else{
+            let lastChar = CALCUL.textContent.slice(-1);
+                operators = ["+","-","*","/","^"],
+                operator = e.target.textContent === "xy" ? "^" :
+                    e.target.textContent;
+            console.log(e.target.textContent);
+    
+            if(operators.includes(lastChar))
+                CALCUL.textContent = CALCUL.textContent.slice(0,-1)+
+                    operator;
+            else
+                CALCUL.textContent += operator;
+        }
     });
 }
 
@@ -64,18 +75,4 @@ PI.addEventListener("click", (e) =>{
     
     if(operators.includes(lastChar) || isLineEmpty)
         CALCUL.textContent += Math.PI;    
-});
-
-// EXP button
-EXP.addEventListener("click", (e) => {
-    if(CALCUL.textContent === "") return;
-    else{
-        let lastChar = CALCUL.textContent.slice(-1);
-            operators = ["+","-","*","/","^"];
-
-        if(operators.includes(lastChar))
-            CALCUL.textContent = CALCUL.textContent.slice(-1)+"^";
-        else
-            CALCUL.textContent += "^";
-    }
 });
