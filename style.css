@@ -46,11 +46,19 @@ main {
   background-color: rgba(101, 92, 122, 0.404);
 }
 .output {
-  width: inherit;  
-  min-height: 28px;
+  width: 100%;  
+  min-height: 60px;
   color: var(--border-color);
   padding: 0 5px 2px 0; 
-  font-size: 1.1em;
+  font-size: 1.3em;
+  overflow: hidden;
+  text-align: right;
+}
+.output:first-child{
+  min-height: 20px;
+  font-size: 1em;
+  font-style: italic;
+  /* line-height: 2em; */
 }
 .btn {
   padding: 15px;
@@ -68,8 +76,8 @@ main {
   background: linear-gradient(42deg,
     rgb(255, 255, 255),
     rgb(146, 147, 148));
-    font-weight: 500;
-    font-size: 1.2em;
+  font-weight: 500;
+  font-size: 1.5em;
 }
 .btn:focus{
   outline: none;

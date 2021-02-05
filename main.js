@@ -22,9 +22,8 @@ for (const item of BTN_ACTION) {
         else{
             let lastChar = CALCUL.textContent.slice(-1);
                 operators = ["+","-","*","/","^"],
-                operator = e.target.textContent === "xy" ? "^" :
+                operator = /[xy]/.test(e.target.textContent) ? "^" :
                     e.target.textContent;
-            console.log(e.target.textContent);
     
             if(operators.includes(lastChar))
                 CALCUL.textContent = CALCUL.textContent.slice(0,-1)+
@@ -48,9 +47,6 @@ EQUAL.addEventListener("click", () =>{
 
     //  test if calcul line is empty or doesn't include calcul operator
     if(CALCUL.textContent === "" || !rgx.test(CALCUL.textContent)) return;
-    // add calcul to history
-    if(RESULT.textContent != "" && RESULT.textContent != CALCUL.textContent+"=")
-        HISTORY.textContent = RESULT.textContent + eval(RESULT.textContent.substring(0,RESULT.textContent.length-1));
 
     RESULT.textContent = CALCUL.textContent + "=";
     CALCUL.textContent = calcul;        
@@ -64,15 +60,16 @@ CANCEL.addEventListener("click", () =>{
 
 //  PI button
 PI.addEventListener("click", (e) =>{
-    let operators = ["+","-","*","/"],
+    let operators = ["+","-","*","/","^"],
         lastChar = "",
-        isLineEmpty = false;
+        isLineEmpty = false,
+        calculSize = CALCUL.textContent.length;
 
-    if(CALCUL.textContent.length > 0)
-        lastChar = CALCUL.textContent[CALCUL.length-1];
+    if(calculSize > 0)
+        lastChar = CALCUL.textContent[calculSize-1];
     else
         isLineEmpty = true;
-    
+
     if(operators.includes(lastChar) || isLineEmpty)
         CALCUL.textContent += Math.PI;    
 });
