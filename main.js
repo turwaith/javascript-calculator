@@ -23,7 +23,7 @@ for (const item of BTN_ACTION) {
             let lastChar = CALCUL.textContent.slice(-1);
                 operators = ["+","-","*","/","^"],
                 operator = /[xy]/.test(e.target.textContent) ? "^" :
-                    e.target.textContent;
+                    /,/.test(e.target.textContent) ? "." : e.target.textContent;
     
             if(operators.includes(lastChar))
                 CALCUL.textContent = CALCUL.textContent.slice(0,-1)+
