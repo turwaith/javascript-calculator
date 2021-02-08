@@ -42,7 +42,7 @@ RESET.addEventListener("click", () => {
 
 //  EQUAL button
 EQUAL.addEventListener("click", () =>{
-    let rgx = /[\*\-\+\/]*/,
+    let rgx = /[\*\-\+\/\^]+/,
         calcul = eval(CALCUL.textContent.replace("^","**"));
 
     //  test if calcul line is empty or doesn't include calcul operator
